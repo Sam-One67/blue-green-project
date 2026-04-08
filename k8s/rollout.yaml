@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: my-advanced-app-rollout
+  namespace: app-blue
 spec:
   replicas: 2
   selector:
@@ -12,15 +13,17 @@ spec:
       labels:
         app: my-advanced-app
     spec:
+      # Use the secret we created to authenticate with AWS ECR
+      imagePullSecrets:
+      - name: regcred
       containers:
       - name: my-app
-        image: 692531238663.dkr.ecr.us-east-1.amazonaws.com/my-advanced-app:v1
+        # Corrected image URI for ap-south-1 region
+        image: 692531238663.dkr.ecr.ap-south-1.amazonaws.com/my-advanced-app:v1
         ports:
         - containerPort: 80
   strategy:
     blueGreen: 
-      # activeService link to the service that will route traffic to the active version of the application  
       activeService: my-advanced-app-service
-      # autoPromotion false 
-      autoPromotionEnabled: false # This will prevent automatic promotion to the new version, allowing for manual verification before switching traffic.
-      # previewService link to the service that will route traffic to the new version of the application
+      previewService: my-advanced-app-preview-service
+      autoPromotionEnabled: false
