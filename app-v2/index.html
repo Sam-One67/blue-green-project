@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Production System | v2 Canary</title>
+    <style>
+        :root { --primary-color: #28a745; --bg-color: #e8f5e9; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-top: 12px solid var(--primary-color); width: 400px; text-align: center; transform: scale(1.02); transition: 0.3s; }
+        .version-badge { background: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+        .status-light { height: 12px; width: 12px; background-color: #ffc107; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .metadata { margin-top: 20px; font-size: 0.9rem; color: #666; text-align: left; background: #f1f8e9; padding: 15px; border-radius: 8px; border: 1px dashed var(--primary-color); }
+        h1 { color: #333; margin-bottom: 5px; }
+        .highlight { color: var(--primary-color); font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="version-badge">Canary Deployment</span>
+        <h1>Version 2 <span class="highlight">(Green)</span></h1>
+        <p><span class="status-light"></span> Testing Phase</p>
+        
+        <div class="metadata">
+            <strong>Advanced Metrics:</strong><br>
+            • Feature: High-Speed Compression<br>
+            • Analysis: Prometheus Success Rate<br>
+            • Auto-Rollback: Enabled
+        </div>
+        <p style="margin-top:20px; font-size: 0.8rem; color: #999;">Last Refresh: <span id="time"></span></p>
+    </div>
+    <script>document.getElementById('time').innerText = new Date().toLocaleTimeString();</script>
+</body>
+</html>

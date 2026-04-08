@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Production System | v1 Stable</title>
+    <style>
+        :root { --primary-color: #007bff; --bg-color: #f0f4f8; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-top: 12px solid var(--primary-color); width: 400px; text-align: center; }
+        .version-badge { background: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .status-light { height: 12px; width: 12px; background-color: #28a745; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 8px #28a745; }
+        .metadata { margin-top: 20px; font-size: 0.9rem; color: #666; text-align: left; background: #f8f9fa; padding: 15px; border-radius: 8px; }
+        h1 { color: #333; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="version-badge">Live Production</span>
+        <h1>Version 1 (Blue)</h1>
+        <p><span class="status-light"></span> System Healthy</p>
+        
+        <div class="metadata">
+            <strong>Deployment Info:</strong><br>
+            • Strategy: Canary Release<br>
+            • Platform: Kubernetes (Minikube)<br>
+            • Traffic Manager: Istio Service Mesh
+        </div>
+        <p style="margin-top:20px; font-size: 0.8rem; color: #999;">Last Refresh: <span id="time"></span></p>
+    </div>
+    <script>document.getElementById('time').innerText = new Date().toLocaleTimeString();</script>
+</body>
+</html>
