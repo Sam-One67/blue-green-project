@@ -19,7 +19,7 @@ spec:
       containers:
       - name: my-app
         # Corrected image URI for ap-south-1 region
-        image: 692531238663.dkr.ecr.ap-south-1.amazonaws.com/my-advanced-app:v1
+        image: 692531238663.dkr.ecr.us-east-1.amazonaws.com/my-advanced-app:v8
         ports:
         - containerPort: 80
   strategy:
