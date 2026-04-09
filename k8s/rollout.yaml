@@ -18,11 +18,7 @@ spec:
       - name: regcred
       containers:
       - name: my-app
-<<<<<<< HEAD
-        # Corrected image URI for ap-south-1 region
-=======
         # Unified to us-east-1 region
->>>>>>> eb12ac3 (fix: update region to us-east-1 and sync image tag)
         image: 692531238663.dkr.ecr.us-east-1.amazonaws.com/my-advanced-app:v8
         ports:
         - containerPort: 80
