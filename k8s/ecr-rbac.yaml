@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: app-blue
+  name: ecr-token-helper
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get", "create", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ecr-token-helper-binding
+  namespace: app-blue
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: app-blue
+roleRef:
+  kind: Role
+  name: ecr-token-helper
+  apiGroup: rbac.authorization.k8s.io
