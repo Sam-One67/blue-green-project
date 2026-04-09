@@ -19,7 +19,7 @@ spec:
       containers:
       - name: my-app
         # Unified to us-east-1 region
-        image: 692531238663.dkr.ecr.us-east-1.amazonaws.com/my-advanced-app:v8
+        image: 692531238663.dkr.ecr.us-east-1.amazonaws.com/my-advanced-app:v9
         ports:
         - containerPort: 80
   strategy:
