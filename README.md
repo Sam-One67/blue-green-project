@@ -1,107 +1,83 @@
-------Enterprise-Grade Kubernetes Orchestration-------
-Multi-Region Blue-Green Deployment Strategy
-Executive Summary
+# 🚀 Global EKS Scalability & Compliance Platform (Multi-Region)
 
-This project demonstrates a production-oriented Blue-Green deployment strategy on Amazon EKS, designed to achieve zero-downtime releases and safer rollbacks.
+---
 
-Instead of updating services in place, the system maintains two parallel environments (Blue and Green). At any point, one serves live traffic while the other is used for validation of new releases. Traffic switching is handled at the Kubernetes layer, making deployments predictable and low-risk.
+## 📝 Executive Summary
+This project is a hands-on implementation of a **Blue-Green Deployment Strategy** on **Amazon EKS**, focused on achieving zero-downtime releases and making rollbacks predictable.
 
-The workflow is fully GitOps-driven, meaning all infrastructure and application states are version-controlled and automatically reconciled with the cluster.
+Rather than updating services in place, the system keeps two environments running in parallel — **Blue** (current production) and **Green** (next release). The new version is deployed to Green, tested, and only then promoted by switching traffic at the Kubernetes layer.
 
-Architecture Overview
+> **GitOps Model:** Both infrastructure and application state live in Git and are continuously reconciled with the cluster using ArgoCD.
 
-The system is based on an immutable infrastructure approach: deployments do not modify running resources but replace them entirely.
+---
 
-At a high level:
+## 🏗️ Architecture Overview
 
-AWS infrastructure (VPC, subnets, EKS cluster) is provisioned using Terraform
-Kubernetes handles container orchestration across multiple Availability Zones
-ArgoCD continuously syncs cluster state with Git
-Traffic routing is controlled via Kubernetes Services and Ingress
+<img width="1264" height="842" alt="Gemini_Generated_Image_hzlblwhzlblwhzlb" src="https://github.com/user-attachments/assets/d3bd1bd0-3e66-49bc-aa5f-a5a469d825b8" />
 
-This setup ensures high availability, reproducibility, and minimal manual intervention.
+The architecture follows an **Immutable Infrastructure** pattern — instead of modifying running resources, new versions are deployed alongside existing ones and then swapped.
 
-Key Design Decisions
-1. Infrastructure as Code (IaC)
+### At a glance:
+* **Provisioning:** AWS infrastructure (VPC, Subnets, EKS) is provisioned using **Terraform**.
+* **Orchestration:** Kubernetes manages workloads across multiple **Availability Zones**.
+* **Synchronization:** **ArgoCD** keeps the cluster in sync with this GitHub repository.
+* **Networking:** Services and Ingress handle internal and external traffic routing.
 
-All AWS resources are defined in Terraform. This makes the environment reproducible and avoids configuration drift between environments.
+---
 
-2. Blue-Green Deployment Model
+## 🛠️ Design Approach
 
-Two separate deployments are maintained:
+### 1. Infrastructure as Code (IaC)
+All cloud resources are defined in **Terraform**. This makes it easy to recreate environments and avoids the "it works on my machine" issues.
 
-Blue (v1.x) → current production
-Green (v2.x) → new release candidate
+### 2. Blue-Green Strategy
+Two environments are always present:
+* **Blue (v1.x):** Live production environment.
+* **Green (v2.x):** New version under validation.
+* **Traffic Switching:** Handled through **Kubernetes Service Selectors**, so there is no need to restart services or touch load balancers.
 
-Traffic is switched by updating service selectors, avoiding restarts or downtime.
+### 3. GitOps with ArgoCD
+ArgoCD watches this repository and applies changes automatically:
+* **Auto-sync:** Keeps deployments consistent.
+* **Self-healing:** Corrects manual changes in the cluster.
+* **Audit Trail:** Git history acts as a full audit log for every change.
 
-3. GitOps Workflow
+---
 
-ArgoCD monitors this repository and applies changes automatically.
+## ⚙️ CI/CD Workflow
 
-Auto-sync enabled
-Self-healing ensures cluster always matches Git
-Every deployment is traceable via Git history
-CI/CD Pipeline
-Continuous Integration (CI)
+### Continuous Integration (CI)
+**Tool:** Jenkins
+1.  Build Docker image from source.
+2.  Run vulnerability checks (Image Scanning).
+3.  Push image to **Amazon ECR**.
+4.  Tag using **Semantic Versioning**.
 
-Tool: Jenkins
+### Continuous Deployment (CD)
+**Tool:** ArgoCD
+1.  Developer updates manifests in Git.
+2.  ArgoCD detects the drift.
+3.  **Green Environment** is deployed automatically.
+4.  Smoke tests are performed on the Green pods.
+5.  **Traffic Shift:** Switch Service selector from Blue to Green.
 
-On every commit:
+---
 
-Application is built into a Docker image
-Image is scanned for vulnerabilities
-Image is pushed to Amazon ECR
-Semantic versioning is used for tagging
+## 📊 Observability
+Basic monitoring stack is included to keep track of system health:
+* **Prometheus:** Metrics collection.
+* **Grafana:** Visualization via dashboards.
+* **Alertmanager:** Alerting via **SMTP/Gmail**.
 
-This ensures traceability and consistent builds.
+---
 
-Continuous Deployment (CD)
-
-Tool: ArgoCD
-
-Deployment flow:
-
-Developer pushes manifest changes
-ArgoCD detects drift
-Green environment is deployed
-Smoke testing is performed
-Traffic is switched from Blue → Green
-
-Rollback is straightforward: switch traffic back to Blue.
-
-Traffic Management
-
-Traffic routing is handled internally using Kubernetes primitives:
-
-Service selectors act as the traffic switch
-Ingress controller exposes the application externally
-
-Switching environments does not require DNS changes or load balancer reconfiguration, which keeps latency effectively unchanged during transitions.
-
-Observability Stack
-Prometheus → collects metrics
-Grafana → visualizes system health
-Alertmanager → sends alerts via SMTP
-
-This provides visibility into deployments, resource usage, and potential failures.
-
-Repository Structure
-├── app-v1/                 # Stable version (Blue)
-├── app-v2/                 # New release (Green)
-├── k8s/                    # Kubernetes manifests
+## 📂 Repository Structure
+```bash
+├── app-v1/             # Blue (current production)
+├── app-v2/             # Green (next release)
+├── k8s/                # Kubernetes manifests
 │   ├── deployment-blue.yaml
 │   ├── deployment-green.yaml
-│   ├── service.yaml        # Traffic switching logic
+│   ├── service.yaml    # Controls traffic switching
 │   └── ingress.yaml
-└── terraform/              # Infrastructure provisioning
-Why This Approach
-
-Traditional rolling deployments still carry risk during updates. This setup avoids that by isolating environments completely.
-
-Key benefits:
-
-Zero-downtime deployments
-Instant rollback capability
-Clear separation between stable and candidate releases
-Fully auditable deployment history<img width="1264" height="842" alt="Gemini_Generated_Image_hzlblwhzlblwhzlb" src="https://github.com/user-attachments/assets/4717cc1f-671b-4159-a91d-9b9914c3e557" />
+└── terraform/          # Infrastructure (EKS, networking) 
