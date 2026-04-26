@@ -1,4 +1,4 @@
-# 🚀 Global EKS Scalability & Compliance Platform (Multi-Region)
+#  Global EKS Scalability & Compliance Platform (Multi-Region)
 
 ---
 
