@@ -2,7 +2,7 @@
 
 ---
 
-## 📝 Executive Summary
+## Executive Summary
 This project is a hands-on implementation of a **Blue-Green Deployment Strategy** on **Amazon EKS**, focused on achieving zero-downtime releases and making rollbacks predictable.
 
 Rather than updating services in place, the system keeps two environments running in parallel — **Blue** (current production) and **Green** (next release). The new version is deployed to Green, tested, and only then promoted by switching traffic at the Kubernetes layer.
@@ -11,7 +11,7 @@ Rather than updating services in place, the system keeps two environments runnin
 
 ---
 
-## 🏗️ Architecture Overview
+##  Architecture Overview
 
 <img width="1264" height="842" alt="Gemini_Generated_Image_hzlblwhzlblwhzlb" src="https://github.com/user-attachments/assets/d3bd1bd0-3e66-49bc-aa5f-a5a469d825b8" />
 
@@ -63,7 +63,7 @@ ArgoCD watches this repository and applies changes automatically:
 
 ---
 
-## 📊 Observability
+## Observability
 Basic monitoring stack is included to keep track of system health:
 * **Prometheus:** Metrics collection.
 * **Grafana:** Visualization via dashboards.
@@ -81,3 +81,19 @@ Basic monitoring stack is included to keep track of system health:
 │   ├── service.yaml    # Controls traffic switching
 │   └── ingress.yaml
 └── terraform/          # Infrastructure (EKS, networking) 
+```
+
+<div align="center">
+
+# 👨‍💻 Muhammad Ahmed
+### *Cloud & DevOps Engineer*
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white)](YOUR_LINK_HERE)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-%23000000?style=for-the-badge&logo=vercel&logoColor=white)](YOUR_LINK_HERE)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muhammaad.ahmaad123@gmail.com)
+
+---
+
+**AWS • Terraform • Kubernetes • Ansible • Docker**
+
+</div>
