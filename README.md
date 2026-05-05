@@ -86,11 +86,10 @@ Basic monitoring stack is included to keep track of system health:
 ---
 
 
-## 👤 Author
+## 👨‍💻 Engineering Lead
+**Muhammad Ahmed**  
+*Cloud & DevOps Engineer*  
 
-[Muhammad Ahmed]
-GitHub: https://github.com/Sam-One67
-Linkdlen: 
-Email: muhammaad.ahmaad123@gmail.com
-
-Open to DevOps and Cloud Engineering opportunities.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](YOUR_LINK_HERE) 
+[![Portfolio](https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](YOUR_LINK_HERE) 
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muhammaad.ahmaad123@gmail.com)
