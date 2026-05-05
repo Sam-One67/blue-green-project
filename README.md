@@ -86,17 +86,10 @@ Basic monitoring stack is included to keep track of system health:
 ---
 
 
-<div align="center">
+## 👨‍💻 Engineering Lead
+**Muhammad Ahmed**  
+*Cloud & DevOps Engineer*  
 
-# 👨‍💻 Muhammad Ahmed
-### *Cloud & DevOps Engineer*
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white)](YOUR_LINK_HERE)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-%23000000?style=for-the-badge&logo=vercel&logoColor=white)](YOUR_LINK_HERE)
-[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muhammaad.ahmaad123@gmail.com)
-
----
-
-**AWS • Terraform • Kubernetes • Ansible • Docker**
-
-</div>
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](YOUR_LINK_HERE) 
+[![Portfolio](https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](YOUR_LINK_HERE) 
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muhammaad.ahmaad123@gmail.com)
