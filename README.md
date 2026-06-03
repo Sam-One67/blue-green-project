@@ -13,7 +13,7 @@ Rather than updating services in place, the system keeps two environments runnin
 
 ##  Architecture Overview
 
-<img width="1264" height="842" alt="Gemini_Generated_Image_hzlblwhzlblwhzlb" src="https://github.com/user-attachments/assets/d3bd1bd0-3e66-49bc-aa5f-a5a469d825b8" />
+<img width="1536" height="1024" alt="ChatGPT Image Jun 3, 2026, 12_42_56 PM" src="https://github.com/user-attachments/assets/28d43e15-e768-497c-b09a-5b0b9c7bac11" />
 
 The architecture follows an **Immutable Infrastructure** pattern — instead of modifying running resources, new versions are deployed alongside existing ones and then swapped.
 
